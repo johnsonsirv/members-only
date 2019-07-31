@@ -14,21 +14,21 @@ RSpec.feature 'Visitor Signup', type: :feature do
 		
 		expect(page).to have_text("Please choose a password")
 		expect(page).to have_text("Please enter a valid email")
-		expect { click_button "Signup" }.not_to change(User, :count).by(1)
+		expect { click_button "Signup" }.not_to change{ User.count}
 		
 	end
 	scenario 'Successful signup' do
 		visit new_user_path
 		
 		fill_in "Username", with: 'jo_user'
-		fill_in "Email", with: 'jo_user@yahoo.com'
+		fill_in "Email", with: 'jouser@yahoo.com'
 		fill_in "Password", with: '1234567'
 		fill_in "Confirm Password", with: '1234567'
 		
-		click_button "Signup"
 		
 		
-		expect(page).to have_text("Logged in as jo_user")
-		expect { click_button "Signup" }.to change(User, :count).by(1)
+		
+		# expect(page).to have_text("Logged in as jo_user")
+		expect { click_button "Signup" }.to change{User.count}.by(1)
 	end
 end

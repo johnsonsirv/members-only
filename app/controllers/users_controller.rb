@@ -8,13 +8,12 @@ class UsersController < ApplicationController
 		 if @user.save
 			# redirect_to new_user_path
 		else
-			flash.now[:danger] = 'Signup Failed'
 			render :new
 		end
 	end
 	
 	private
 		def user_params
-			params.require(:user).permit(:username, :email, :password_digest)
+			params.require(:user).permit(:username, :email, :password_digest, :password_confirmation)
 		end
 end
