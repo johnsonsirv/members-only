@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Visitor Signup', type: :feature do
-	scenario 'Unsuccessful Signup due to invalid submission' do
+	scenario 'Unsuccessful signup due to invalid submission' do
 		# before_count = User.count
 		visit new_user_path
 		
@@ -17,7 +17,7 @@ RSpec.feature 'Visitor Signup', type: :feature do
 		expect { click_button "Signup" }.not_to change(User, :count).by(1)
 		
 	end
-	scenario 'Successful Signup due to invalid submission' do
+	scenario 'Successful signup' do
 		visit new_user_path
 		
 		fill_in "Username", with: 'jo_user'
