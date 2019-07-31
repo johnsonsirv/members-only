@@ -12,8 +12,8 @@ RSpec.feature 'Visitor Signup', type: :feature do
 		
 		click_button "Signup"
 		
-		expect(page). have_text("Please choose a password")
-		expect(page). have_text("Please enter a valid email")
+		expect(page).to have_text("Please choose a password")
+		expect(page).to have_text("Please enter a valid email")
 		expect { click_button "Signup" }.not_to change(User, :count).by(1)
 		
 	end
@@ -28,7 +28,7 @@ RSpec.feature 'Visitor Signup', type: :feature do
 		click_button "Signup"
 		
 		
-		expect(page). have_text("Logged in as jo_user")
+		expect(page).to have_text("Logged in as jo_user")
 		expect { click_button "Signup" }.to change(User, :count).by(1)
 	end
 end

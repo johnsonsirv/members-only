@@ -10,5 +10,4 @@ class User < ApplicationRecord
 	validates :email, format: { with: VALID_EMAIL_REGEX, message: "Please enter a valid email"  },
                     uniqueness: { case_sensitive: false }
 	
-	
 end
