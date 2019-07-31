@@ -1,15 +1,15 @@
 <h3>Signup Here</h3>
 <%= form_for(@user) do |f| %>
-	 <%= f.label :username %>
+	 <%= f.label :username, "Username" %>
 		<%= f.text_field :username %>
 
-		<%= f.label :email %>
+		<%= f.label :email, "Email" %>
 		<%= f.email_field :email %>
 
-		<%= f.label :password_digest %>
+		<%= f.label :password_digest, "Password" %>
 		<%= f.password_field :password_digest %>
 
-		<%= f.label :confirm_password %>
+		<%= f.label :confirm_password, "Confirm Password" %>
 		<%= f.password_field :confirm_password %>
 		
 		<%= f.submit "Signup", class: "btn btn-primary" %>
