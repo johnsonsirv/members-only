@@ -1,18 +1,18 @@
 <h1>Login</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-		<div class="alert alert-danger">
-			<% unless flash.empty? %>
-				<strong> <%= flash.now[:login_error] %> </strong>
-			<% end %>
-		</div>
+		<% unless flash.empty? %>
+			<div class="alert alert-danger">
+					<strong> <%= flash.now[:login_error] %> </strong>
+			</div>
+		<% end %>
 		<%= form_for(:session, url: login_path) do |f| %>
 
       <%= f.label :username, "Username" %>
       <%= f.email_field :username, class: 'form-control', placeholder: "Enter Username" %>
 
-      <%= f.label :password, "Password", placeholder: "Enter Password" %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.label :password, "Password" %>
+      <%= f.password_field :password, class: 'form-control', placeholder: "Enter Password" %>
 
       <%= f.submit "Log in", class: "btn btn-primary", title: "Log in" %>
     <% end %>

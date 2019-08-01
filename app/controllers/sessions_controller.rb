@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 		
 		if member && member.authenticate(username: params[:session][:password])
 			log_in member
-			redirect_to post
+			# redirect_to post
 		else
 			flash.now[:login_error] = "Incorrect username or password"
 			render 'new'
@@ -16,5 +16,9 @@ class SessionsController < ApplicationController
 	end
 	
 	def destroy
+		session[:logged_member] = nil
+		session[:logged_time] = nil
+		
+		redirect_to root_path
 	end
 end
