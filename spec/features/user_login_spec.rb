@@ -1,14 +1,16 @@
 require 'rails_helper'
 
-RSpec.feature 'User Login', type: :feature do
+RSpec.feature 'Memeber Login', type: :feature do
 	before do
-		params: { user: { username:  "jo_user",
+		params = {user: {username:  "jo_user",
 											email: "jouser@gmail.com",
 											password_digest: "12345678",
-											password_confirmation: "12345678" } }
+											password_confirmation: "12345678" 
+										}  }
 		
 		User.create(params[:user])
 	end
+	
 	scenario 'Unsuccessful Login attempt due to incorrect username.password' do
 		visit login_path
 		
