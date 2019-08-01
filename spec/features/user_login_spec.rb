@@ -27,6 +27,7 @@ RSpec.feature 'User Login', type: :feature do
 		fill_in "Password", with: '12345678'
 		
 		click_button "Login"
+		
 		expect(page).to have_text("Logged in as jo_user")
 		expect(page).to have_link("Logout")
 	end
