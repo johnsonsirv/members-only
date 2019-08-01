@@ -13,5 +13,11 @@ module SessionsHelper
 		if logged_in?
 			 @current_user ||= User.find_by(id: session[:logged_member])
 		end
+		
+	end
+	
+	def log_out
+		session[:logged_member] = nil
+		session[:logged_time] = nil
 	end
 end

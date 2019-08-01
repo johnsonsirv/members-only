@@ -16,9 +16,8 @@ class SessionsController < ApplicationController
 	end
 	
 	def destroy
-		session[:logged_member] = nil
-		session[:logged_time] = nil
-		
+		log_out
 		redirect_to root_path
 	end
+	
 end
