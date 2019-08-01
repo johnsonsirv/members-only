@@ -30,6 +30,7 @@ RSpec.feature 'Memeber Authentication', type: :feature do
 		
 		click_button "Log in"
 		
+		expect(@current_user.username).to eql("jo_user")
 		expect(page).to have_text("Logged in as jo_user")
 		expect(page).to have_link("Logout")
 	end
@@ -39,7 +40,7 @@ RSpec.feature 'Memeber Authentication', type: :feature do
 		
 		expect(page).to have_text("Username")
 		expect(page).to have_text("Passowrd")
-		expect(page).to have_text("Login")
+		expect(page).to have_text("Log in")
 	end
 	
 end
