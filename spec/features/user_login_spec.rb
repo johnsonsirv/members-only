@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Memeber Login / Logout', type: :feature do
+RSpec.feature 'Memeber Authentication', type: :feature do
 	before do
 		params = {user: {username:  "jo_user",
 											email: "jouser@gmail.com",
@@ -11,7 +11,7 @@ RSpec.feature 'Memeber Login / Logout', type: :feature do
 		User.create(params[:user])
 	end
 	
-	scenario 'Unsuccessful Login attempt due to incorrect username.password' do
+	scenario 'Unsuccessful Login attempt due to incorrect username or password' do
 		visit login_path
 		
 		fill_in "Username", with: 'abiye'
