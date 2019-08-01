@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Memeber Login', type: :feature do
+RSpec.feature 'Memeber Login / Logout', type: :feature do
 	before do
 		params = {user: {username:  "jo_user",
 											email: "jouser@gmail.com",
@@ -33,4 +33,13 @@ RSpec.feature 'Memeber Login', type: :feature do
 		expect(page).to have_text("Logged in as jo_user")
 		expect(page).to have_link("Logout")
 	end
+	
+	scenario 'Logout and redirect to login page' do
+		click_link "Logout"
+		
+		expect(page).to have_text("Username")
+		expect(page).to have_text("Passowrd")
+		expect(page).to have_text("Login")
+	end
+	
 end
