@@ -4,7 +4,7 @@ RSpec.feature 'Memeber Login / Logout', type: :feature do
 	before do
 		params = {user: {username:  "jo_user",
 											email: "jouser@gmail.com",
-											password_digest: "12345678",
+											password: "12345678",
 											password_confirmation: "12345678" 
 										}  }
 		
@@ -17,7 +17,7 @@ RSpec.feature 'Memeber Login / Logout', type: :feature do
 		fill_in "Username", with: 'abiye'
 		fill_in "Password", with: 'abiye_password'
 		
-		click_button "Login"
+		click_button "Log in"
 		
 		expect(page).to have_text("Incorrect username or password")
 	end
@@ -28,7 +28,7 @@ RSpec.feature 'Memeber Login / Logout', type: :feature do
 		fill_in "Username", with: 'jo_user'
 		fill_in "Password", with: '12345678'
 		
-		click_button "Login"
+		click_button "Log in"
 		
 		expect(page).to have_text("Logged in as jo_user")
 		expect(page).to have_link("Logout")

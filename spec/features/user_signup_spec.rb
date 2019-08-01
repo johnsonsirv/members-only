@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Visitor Signup', type: :feature do
 	scenario 'Unsuccessful signup due to invalid submission' do
 		# before_count = User.count
-		visit new_user_path
+		visit signup_path
 		
 		fill_in "Username", with: 'jo_user'
 		fill_in "Email", with: ' '
@@ -18,7 +18,7 @@ RSpec.feature 'Visitor Signup', type: :feature do
 		
 	end
 	scenario 'Successful signup' do
-		visit new_user_path
+		visit signup_path
 		
 		fill_in "Username", with: 'jo_user'
 		fill_in "Email", with: 'jouser@yahoo.com'
