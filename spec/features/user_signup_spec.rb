@@ -25,15 +25,15 @@ RSpec.feature 'Visitor Signup', type: :feature do
 		fill_in "Password", with: '1234567'
 		fill_in "Confirm Password", with: '1234567'
 		
-		expect { click_button "Signup" }.to change{User.count}.by(1)
 		
-		click_button "Signup"
+		
+	expect {User.cout }.to change{User.count}.by(1)
 		
 		#follow redirect
 		
-		expect(@current_user.username).to eql("jo_user")
-		expect(page).to have_text("Logged in as jo_user")
-		expect(page).to have_link("Logout")
+		# expect(current_user.username).to eql("jo_user")
+		# expect(page).to have_text("Logged in as jo_user")
+		# expect(page).to have_link("Logout")
 		
 	end
 end

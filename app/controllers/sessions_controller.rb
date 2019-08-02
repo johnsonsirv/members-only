@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 		
 		if member && member.authenticate(username: params[:session][:password])
 			log_in member
-			# redirect_to post
+			redirect_to root_path
 		else
 			flash.now[:login_error] = "Incorrect username or password"
 			render 'new'
