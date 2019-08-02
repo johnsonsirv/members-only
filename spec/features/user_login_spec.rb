@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Memeber Authentication', type: :feature do
+RSpec.feature 'Member Authentication', type: :feature do
 	before do
 		params = {user: {username:  "jo_user",
 											email: "jouser@gmail.com",
@@ -36,6 +36,14 @@ RSpec.feature 'Memeber Authentication', type: :feature do
 	end
 	
 	scenario 'Logout and redirect to login page' do
+		
+		visit login_path
+		
+		fill_in "Username", with: 'jo_user'
+		fill_in "Password", with: '12345678'
+		
+		click_button "Log in"
+		
 		click_link "Logout"
 		
 		

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 	def create
 		member = User.find_by(username: params[:session][:username].downcase)
 		
-		if member && member.authenticate(password: params[:session][:password])
+		if member && member.authenticate(params[:session][:password])
 			log_in member
 			redirect_to root_path
 		else
