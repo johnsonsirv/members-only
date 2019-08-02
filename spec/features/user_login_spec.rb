@@ -44,7 +44,7 @@ RSpec.feature 'Member Authentication', type: :feature do
 		
 		click_button "Log in"
 		
-		click_link "Logout"
+		visit "Logout"
 		
 		
 		expect(page).to have_current_path(login_path)
