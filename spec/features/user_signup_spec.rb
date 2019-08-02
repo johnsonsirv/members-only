@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Visitor Signup', type: :feature do
 	scenario 'Unsuccessful signup due to invalid submission' do
-		# before_count = User.count
+		
 		visit signup_path
 		
 		fill_in "Username", with: 'jo_user'
@@ -27,13 +27,12 @@ RSpec.feature 'Visitor Signup', type: :feature do
 		
 		
 		
-	expect {User.cout }.to change{User.count}.by(1)
+		expect { click_button "Signup" }.to change{ User.count}.by(1)
 		
-		#follow redirect
-		
-		# expect(current_user.username).to eql("jo_user")
-		# expect(page).to have_text("Logged in as jo_user")
-		# expect(page).to have_link("Logout")
+		expect(page).to have_text("New Post")
+		expect(page).to have_text("View Posts")
+		expect(page).to have_current_path(root_path)
+		expect(page).to have_link("Logout")
 		
 	end
 end

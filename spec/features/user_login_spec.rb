@@ -22,7 +22,7 @@ RSpec.feature 'Memeber Authentication', type: :feature do
 		expect(page).to have_text("Incorrect username or password")
 	end
 	
-	scenario 'Succesful Login and redirect to posts' do
+	scenario 'Succesful Login' do
 		visit login_path
 		
 		fill_in "Username", with: 'jo_user'
@@ -30,14 +30,16 @@ RSpec.feature 'Memeber Authentication', type: :feature do
 		
 		click_button "Log in"
 		
-		# expect(@current_user.username).to eql("jo_user")
-		expect(page).to have_text("Logged in as jo_user")
+		expect(page).to have_text("New Post")
+		expect(page).to have_text("View Posts")
 		expect(page).to have_link("Logout")
 	end
 	
 	scenario 'Logout and redirect to login page' do
 		click_link "Logout"
 		
+		
+		expect(page).to have_current_path(login_path)
 		expect(page).to have_text("Username")
 		expect(page).to have_text("Passowrd")
 		expect(page).to have_text("Log in")

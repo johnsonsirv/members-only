@@ -67,7 +67,10 @@ Capybara.register_driver :selenium_chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
 
-Capybara.javascript_driver = :selenium_chrome
+Capybara.configure do |config|
+	config.javascript_driver = :selenium_chrome
+end
+
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
