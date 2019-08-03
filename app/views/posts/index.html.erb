@@ -7,8 +7,10 @@
 		<% @post.each do |p| %>
 		<div class="card" style="width: 18rem;">
 			<div class="card-body">
-				<h5 class="card-title"><%= p.title.capitalize%></h5>
-				<h6 class="card-subtitle mb-2 text-muted">by: <%= logged_in? ? p.username : 'anonymous' %></h6>
+				<h5 class="card-title"><%= p.title.capitalize %></h5>
+				<h6 class="card-subtitle mb-2 text-muted">by: <%= logged_in? ? p.username : 'anonymous' %>
+					
+				</h6>
 				<p class="card-text"><%= p.body %></p>
 				<a href="#" class="card-link">Delete</a>
 			</div>

@@ -9,14 +9,20 @@ RSpec.feature 'Posts', type: :feature do
 										}  }
 		
 		User.create(params[:user])
+		
+		p = User.first.posts.build(title: "My first secret post", body: "I am posting a secret message")
+		p.save
 	end
 	
 	scenario 'View posts without authentication' do
 		visit posts_path
 		
+		expect(page).to have_text "My first secret post"
+		expect(page).to have_text "I am posting a secret message"
 		expect(page).to have_text "by: anonymous"
 		expect(page).to have_link "View Posts"
-		
+		expect(page).to have_link "Signup"
+		expect(page).to have_link "Login"
 	end
 	
 	scenario 'View Post with authentication' do
@@ -27,9 +33,17 @@ RSpec.feature 'Posts', type: :feature do
 		
 		click_button "Log in"
 		
+		visit new_post_path
+		
+		fill_in "Title", with: 'My first secret post'
+		fill_in "Body", with: 'I am posting a secret message'
+		
+		click_button "Add Post"
+		
 		visit posts_path
 		
 		expect(page).not_to have_text "by: anonymous"
+		expect(page).to have_text "by: jo_user"
 		
 		expect(page).to have_link "New Post"
 	end
@@ -67,10 +81,7 @@ RSpec.feature 'Posts', type: :feature do
 		visit new_post_path
 		
 		
-		expect(page).to have_current_path login_path
-		expect(page).to have_text "Please log in"
-		expect(page).to have_text "Username"
-		expect(page).to have_text "Password"
+		expect(page).to have_current_path posts_path
 		expect(page).to have_link "Login"
 		expect(page).to have_link "Signup"
 	end
