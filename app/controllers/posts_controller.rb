@@ -3,9 +3,9 @@ class PostsController < ApplicationController
 	
 	def index
 		if logged_in?
-			@post = Post.joins(:user).select(:title, :body, :username)
+			@post = Post.joins(:user).select(:id, :title, :body, :username)
 		else
-				@post = Post.select(:title, :body)	
+			@post = Post.select(:title, :body)
 		end
   end
 	
