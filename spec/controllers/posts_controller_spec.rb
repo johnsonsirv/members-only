@@ -9,9 +9,9 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 	
-	 describe "GET #posts" do
+	 describe "GET #index" do
     it "returns http success" do
-      get :posts
+      get :index
       expect(response).to have_http_status(:success)
     end
   end
