@@ -16,6 +16,6 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 	describe "before_filters" do
-		it { should use_before_action(:logged_in) }
+		it { should use_before_action(:authenticate_user) }
 	end
 end
