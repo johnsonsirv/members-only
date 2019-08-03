@@ -93,13 +93,9 @@ RSpec.feature 'Posts', type: :feature do
 		click_button "Add Post"
 		
 		
-		
-		expect(page).to have_current_path new_post_path
-		
 		expect(page).not_to have_text "New Post succesfuly added"
 		expect(page).to have_text "Title"
 		expect(page).to have_text "Body"
-		expect(page).to have_link "Add Post"
 		expect(page).not_to have_text "by: anonymous"
 	end
 	
