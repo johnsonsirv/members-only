@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user, only: [:new, :create, :destroy]
+  before_action :authenticate_user, only: [:new, :create, :delete]
 	
 	def index
 		if logged_in?
@@ -14,10 +14,10 @@ class PostsController < ApplicationController
   end
 	
 	def create
-		@post = current_user.posts.build(title: params[:title], body: params[:body])
-		if post.save
+		@post = current_user.posts.build(post_params)
+		if @post.save
 			flash[:message] = "New Post succesfuly added"
-			redirect_to @post
+			redirect_to posts_path
 		else
 			render :new
 		end
@@ -29,17 +29,18 @@ class PostsController < ApplicationController
 		redirect_to posts_path
 	end
 	
-	def authenticate_user
-		unless logged_in?
-			flash[:login_error] = "Please log in"
-			redirect_to login_path
-		end
-	end
-	
 	private
+		def authenticate_user
+			unless logged_in?
+				flash[:login_error] = "Please log in"
+				redirect_to login_path
+			end
+		end
+
+		def post_params
+			params.require(:post).permit(:title, :body)
+		end
 	
-		
-		
 		def is_current_user?(user)
 		end
 

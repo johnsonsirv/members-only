@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
-	before do
-		Post.create(title: "Test Post title", body: "Test post content", user_id: 1)
-	end
 	
 	describe "before_filters" do
 		it { should use_before_action(:authenticate_user) }
