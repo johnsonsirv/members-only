@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 	
 	def index
 		if logged_in?
-			@post = Post.joins(:user).select(:id, :title, :body, :username)
+			@post = Post.joins(:user).select(:id, :title, :body, :username, :user_id)
 		else
 			@post = Post.select(:title, :body)
 		end
@@ -24,10 +24,12 @@ class PostsController < ApplicationController
 	end
 	
 	def destroy
-		Post.find_by(params[:id]).destroy
+		@post.destroy
 		flash[:message] = "Post Deleted"
 		redirect_to posts_path
 	end
+	
+
 	
 	private
 		def authenticate_user
@@ -40,8 +42,4 @@ class PostsController < ApplicationController
 			params.require(:post).permit(:title, :body)
 		end
 	
-		def is_post_author?(user)
-			
-		end
-
 end

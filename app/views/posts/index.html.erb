@@ -12,7 +12,9 @@
 					
 				</h6>
 				<p class="card-text"><%= p.body %></p>
-				<a href="#" class="card-link">Delete</a>
+				<% if is_post_author?(p) %>
+				<td><%= link_to 'Delete Post', p, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link' %></td>
+				<% end %>
 			</div>
 		</div>
 	<% end %>

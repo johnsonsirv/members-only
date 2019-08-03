@@ -2,16 +2,26 @@ require 'rails_helper'
 
 RSpec.feature 'Posts', type: :feature do
 	before do
-		params = {user: {username:  "jo_user",
+		params_1 = {user: {username:  "jo_user",
 											email: "jouser@gmail.com",
 											password: "12345678",
 											password_confirmation: "12345678" 
 										}  }
+		params_2 = {user: {username:  "user_2",
+											email: "user_2@gmail.com",
+											password: "12345678",
+											password_confirmation: "12345678" 
+										}  }
 		
-		User.create(params[:user])
+		User.create(params_1[:user])
+		User.create(params_2[:user])
 		
 		p = User.first.posts.build(title: "My first secret post", body: "I am posting a secret message")
 		p.save
+		
+		p2 = User.second.posts.build(title: "Another user first secret post", body: "Another user posting a secret message")
+		p2.save
+		
 	end
 	
 	scenario 'View posts without authentication' do
@@ -19,7 +29,10 @@ RSpec.feature 'Posts', type: :feature do
 		
 		expect(page).to have_text "My first secret post"
 		expect(page).to have_text "I am posting a secret message"
+		expect(page).to have_text "Another user first secret post"
+		expect(page).to have_text "Another user posting a secret message"
 		expect(page).to have_text "by: anonymous"
+		expect(page).not_to have_link "Delete Post"
 		expect(page).to have_link "View Posts"
 		expect(page).to have_link "Signup"
 		expect(page).to have_link "Login"
@@ -44,7 +57,7 @@ RSpec.feature 'Posts', type: :feature do
 		
 		expect(page).not_to have_text "by: anonymous"
 		expect(page).to have_text "by: jo_user"
-		
+		expect(page).to have_link "Delete Post"
 		expect(page).to have_link "New Post"
 	end
 	
