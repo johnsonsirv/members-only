@@ -41,7 +41,8 @@ class PostsController < ApplicationController
 			params.require(:post).permit(:title, :body)
 		end
 	
-		def is_current_user?(user)
+		def is_post_author?(user)
+			
 		end
 
 end
