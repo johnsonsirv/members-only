@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 	
 	def create
-		@post = current_user.posts.build(post_params)
+		@post = current_user.posts.new(post_params)
 		if @post.save
 			flash[:message] = "New Post succesfuly added"
 			redirect_to posts_path
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 	end
 	
 	def destroy
-		@post.destroy
+		Post.find_by(id: params[:id]).destroy
 		flash[:message] = "Post Deleted"
 		redirect_to posts_path
 	end
