@@ -1,22 +1,27 @@
 <div class="row">
-	<% if flash.any? %>
-		<div class="alert alert-success">
-			<strong><%= flash[:message] %></strong>
-		</div>
-	<% end %>
-
-		<% @post.each do |p| %>
-		<div class="card" style="width: 18rem;">
-			<div class="card-body">
-				<h5 class="card-title"><%= p.title.capitalize %></h5>
-				<h6 class="card-subtitle mb-2 text-muted">by: <%= logged_in? ? p.username : 'anonymous' %>
-					
-				</h6>
-				<p class="card-text"><%= p.body %></p>
-				<% if is_post_author?(p) %>
-				<td><%= link_to 'Delete Post', p, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link' %></td>
-				<% end %>
+		<div class="col-0 col-sm-1 col-md-3">	</div>
+		<div class="col-12 col-sm-10 col-md-6">
+			<h3 class="text text-center"> Before you, all secretes are exposed. :) </h3>
+		<% if flash.any? %>
+			<div class="alert alert-success">
+				<strong><%= flash[:message] %></strong>
 			</div>
-		</div>
-	<% end %>
+		<% end %>
+
+			<% @post.each do |p| %>
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title"><%= p.title.capitalize %></h5>
+					<h6 class="card-subtitle mb-2 text-muted">by: <%= logged_in? ? p.username : 'anonymous' %>
+
+					</h6>
+					<p class="card-text"><%= p.body %></p>
+					<% if is_post_author?(p) %>
+					<td><%= link_to 'Delete Post', p, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link' %></td>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	<div class="col-0 col-sm-1 col-md-3">	</div>
 </div>

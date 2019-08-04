@@ -33,7 +33,6 @@ RSpec.feature 'Member Authentication', type: :feature do
 		expect(page).to have_text "New Post"
 		expect(page).to have_text "View Posts"
 		expect(page).to have_link "Logout"
-		expect(page).not_to have_link "Signup"
 		expect(page).not_to have_link "Login"
 	end
 	
@@ -51,10 +50,9 @@ RSpec.feature 'Member Authentication', type: :feature do
 		
 		expect(page).to have_current_path login_path
 		expect(page).not_to have_text "New Post"
-		expect(page).not_to have_text "View Posts"
 		expect(page).to have_text "Username"
 		expect(page).to have_text "Password"
-		expect(page).to have_lin "Login"
+		expect(page).to have_link "Login"
 		expect(page).to have_link "Signup"
 	end
 	
