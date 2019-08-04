@@ -1,6 +1,7 @@
-<h1>Login</h1>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+	<div class="col-0 col-sm-1 col-md-3">	</div>
+  <div class="col-12 col-sm-10 col-md-6">
+		<h3 class="text text-center">Login</h3>
 		<% unless flash.empty? %>
 			<div class="alert alert-danger">
 					<strong> <%= flash.now[:login_error] %> </strong>
@@ -8,15 +9,17 @@
 		<% end %>
 		<%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :username, "Username" %>
-      <%= f.text_field :username, class: 'form-control', placeholder: "Enter Username" %>
-
-      <%= f.label :password, "Password" %>
-      <%= f.password_field :password, class: 'form-control', placeholder: "Enter Password" %>
-
-      <%= f.submit "Log in", class: "btn btn-primary", title: "Log in" %>
+      <div class="form-group">
+      	<%= f.text_field :username, class: 'form-control', placeholder: "Enter Username" %>
+			</div>
+			<div class="form-group">
+				<%= f.password_field :password, class: 'form-control', placeholder: "Enter Password" %>
+			</div>
+      <%= f.submit "Log in", class: "btn btn-primary btn-lg btn-block", title: "Log in" %>
     <% end %>
-
-    <p>Don't have an account? <%= link_to "Sign up now!", signup_path %></p>
+			<p></p>
+			<p>Don't have an account? <%= link_to "Sign up now!", signup_path %></p>
+	
 	</div>
+	<div class="col-0 col-sm-1 col-md-3">	</div>
 </div>
