@@ -23,6 +23,6 @@ class SessionsController < ApplicationController
 	
 	private
 		def is_already_logged_in
-			redirect_to posts_path if logged_in?
+			redirect_to root_path if logged_in?
 		end
 end

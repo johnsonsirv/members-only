@@ -13,7 +13,7 @@ This project was completed in line with standards provided by [Microverse](https
 * Rails 5.2.3
 * Bootstrap
 * RSpec and Capybara (test suite)
-* Authentication using rails in-built ```has_secure_password``` and ```bycrpt```
+* Authentication using ```has_secure_password``` and ```bycrpt```
 * SQLite -- ``development``
 * PgSQL -- ``production``
 

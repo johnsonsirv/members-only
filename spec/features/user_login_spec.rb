@@ -67,7 +67,7 @@ RSpec.feature 'Member Authentication', type: :feature do
 		
 		visit login_path
 		
-		expect(page).to have_current_path posts_path
+		expect(page).to have_current_path root_path
 		expect(page).to have_link "Logout"
 		expect(page).not_to have_link "Login"
 	end
