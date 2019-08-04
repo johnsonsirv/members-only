@@ -2,12 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create, :destroy]
 	
 	def index
-		if logged_in?
-			@post = Post.joins(:user).select(:id, :title, :body, :username, :user_id)
-		else
-			@post = Post.select(:title, :body)
-		end
-		render :index
+		@posts = Post.all
   end
 	
 	def new
@@ -34,9 +29,7 @@ class PostsController < ApplicationController
 	
 	private
 		def authenticate_user
-			unless logged_in?
-				redirect_to posts_path
-			end
+			redirect_to posts_path unless logged_in?
 		end
 
 		def post_params
