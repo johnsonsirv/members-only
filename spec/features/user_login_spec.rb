@@ -33,6 +33,7 @@ RSpec.feature 'Member Authentication', type: :feature do
 		expect(page).to have_text "New Post"
 		expect(page).to have_text "View Posts"
 		expect(page).to have_link "Logout"
+		expect(page).not_to have_text "Signup"
 		expect(page).not_to have_link "Login"
 	end
 	
@@ -54,6 +55,21 @@ RSpec.feature 'Member Authentication', type: :feature do
 		expect(page).to have_text "Password"
 		expect(page).to have_link "Login"
 		expect(page).to have_link "Signup"
+	end
+	
+	scenario 'Has active Login, should not login twice' do
+		visit login_path
+		
+		fill_in "Username", with: 'jo_user'
+		fill_in "Password", with: '12345678'
+		
+		click_button "Log in"
+		
+		visit login_path
+		
+		expect(page).to have_current_path posts_path
+		expect(page).to have_link "Logout"
+		expect(page).not_to have_link "Login"
 	end
 	
 end

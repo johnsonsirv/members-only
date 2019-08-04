@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+	before_action :is_already_logged_in, only: [:new]
   def new
   end
 	
@@ -20,4 +21,8 @@ class SessionsController < ApplicationController
 		redirect_to login_path
 	end
 	
+	private
+		def is_already_logged_in
+			redirect_to posts_path if logged_in?
+		end
 end

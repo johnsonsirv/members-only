@@ -5,8 +5,11 @@
   <div class="card-body">
     <h5 class="card-title">Your secrets are save with us!</h5>
     <p class="card-text">This is an exclusive room where members can write embarrassing posts or share some embarrassing secrets. Inside the rooms, members can see who the author of a post is but, outside, they can only see the story and wonder who wrote it..</p>
-    
-		<%= link_to "Signup", signup_path, class: "btn btn-primary" %>
+    <% if logged_in? %>
+			<li class="nav-item"> <%= link_to "New Post", new_post_path, class: "nav-link" %>  </li>
+		<% else %>
+			<%= link_to "Signup", signup_path, class: "btn btn-primary" %>
+		<% end %>
 		<%= link_to "View Posts", posts_path, class: "btn btn-primary" %>
   </div>
   <div class="card-footer text-muted">
