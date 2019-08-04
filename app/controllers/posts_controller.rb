@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 		else
 			@post = Post.select(:title, :body)
 		end
+		render :index
   end
 	
 	def new
