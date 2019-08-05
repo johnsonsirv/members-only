@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 	before_action :is_already_logged_in, only: [:new]
   def new
+		
   end
 	
 	def create
@@ -22,7 +23,8 @@ class SessionsController < ApplicationController
 	end
 	
 	private
-		def is_already_logged_in
-			redirect_to root_path if logged_in?
-		end
+	def is_already_logged_in
+		redirect_to root_path if logged_in?
+	end
+	
 end

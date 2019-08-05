@@ -6,14 +6,11 @@ module SessionsHelper
 	end
 	
 	def logged_in?
-		session[:logged_member] && session[:logged_time]
+		current_user && session[:logged_time]
 	end
 	
 	def current_user
-		if logged_in?
-			 @current_user ||= User.find_by(id: session[:logged_member])
-		end
-		
+		@current_user ||= User.find_by(id: session[:logged_member]) if session[:logged_member]
 	end
 	
 	def log_out

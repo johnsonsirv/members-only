@@ -25,8 +25,6 @@ class PostsController < ApplicationController
 		redirect_to posts_path
 	end
 	
-
-	
 	private
 		def authenticate_user
 			redirect_to posts_path unless logged_in?
