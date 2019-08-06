@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-0 col-sm-1 col-md-3">	</div>
+	<div class="col-12 col-sm-10 col-md-6">
+		<h3 class="text text-center">New Post</h3>
+
+		<%= form_for(@post) do |f| %>
+				<%= render 'shared/post_messages' %>
+				<div class="form-group">
+					<%= f.label :title, "Title" %>
+					<%= f.text_field :title, placeholder: "Title", class: "form-control" %>
+				</div>
+				<div class="form-group">
+						<%= f.label :body, "Body" %>
+					<%= f.text_area :body, placeholder: "Post content", class: "form-control" %>
+				</div>
+				<%= f.submit "Add Post", class: "btn btn-primary btn-lg btn-block", title: "Add Post" %>
+		<% end %>
+	</div>
+	<div class="col-0 col-sm-1 col-md-3">	</div>
+</div>
+
